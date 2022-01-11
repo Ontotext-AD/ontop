@@ -174,11 +174,11 @@
             <artifactId>rdf4j-sparql-testsuite</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.eclipse.rdf4j</groupId>
-            <artifactId>rdf4j-queryparser-serql</artifactId>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.eclipse.rdf4j</groupId>-->
+<!--            <artifactId>rdf4j-queryparser-serql</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>com.google.inject</groupId>
