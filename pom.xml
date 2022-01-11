@@ -188,6 +188,10 @@
         <semargl-sesame.version>0.6.1</semargl-sesame.version>
         <semargl.version>0.7</semargl.version>
         <tomcat-embed-core.version>9.0.43</tomcat-embed-core.version>
+
+        <!-- Ontotext repos -->
+        <internal.repo>http://maven.ontotext.com/content/repositories/owlim-releases</internal.repo>
+        <snapshots.repo>http://maven.ontotext.com/content/repositories/owlim-snapshots</snapshots.repo>
     </properties>
 
     <dependencyManagement>
@@ -1791,4 +1795,17 @@
         </profile>
     </profiles>
 
+    <!-- Ontotext deploy to Nexus -->
+    <distributionManagement>
+        <repository>
+            <id>internal</id>
+            <name>OWLIM Releases repository</name>
+            <url>${internal.repo}</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>OWLIM Snapshots repository</name>
+            <url>${snapshots.repo}</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
