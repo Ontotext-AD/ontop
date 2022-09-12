@@ -6,7 +6,7 @@
     <parent>
         <groupId>it.unibz.inf.ontop</groupId>
         <artifactId>ontop</artifactId>
-        <version>4.2.0-RDF4J4-ONTO1</version>
+        <version>4.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>ontop-test</artifactId>
