@@ -127,8 +127,8 @@ class RDF4JDescribeQueryImpl implements RDF4JDescribeQuery {
     }
 
     private static TupleExpr createSPPOUnion(boolean isFixedObjectIncludedInDescribe) {
-        Var describeVariable = new Var(DESCRIBE_VARIABLE);
-        StatementPattern leftStatement = new StatementPattern(describeVariable, new Var(P1), new Var(O1));
+        Var leftDescribeVar = new Var(DESCRIBE_VARIABLE);
+        StatementPattern leftStatement = new StatementPattern(leftDescribeVar, new Var(P1), new Var(O1));
 
         ProjectionElem describeProjectionElem = new ProjectionElem(DESCRIBE_VARIABLE);
 
@@ -136,7 +136,8 @@ class RDF4JDescribeQueryImpl implements RDF4JDescribeQuery {
                 new ProjectionElemList(describeProjectionElem, new ProjectionElem(P1), new ProjectionElem(O1)));
 
         if (isFixedObjectIncludedInDescribe) {
-            StatementPattern rightStatement = new StatementPattern(new Var(S2), new Var(P2), describeVariable);
+            // Do not share variables in statements patterns, not allowed in rdf4j 4.1.2, see https://github.com/eclipse/rdf4j/issues/4112
+            StatementPattern rightStatement = new StatementPattern(new Var(S2), new Var(P2), new Var(DESCRIBE_VARIABLE));
             Projection right = new Projection(rightStatement,
                     new ProjectionElemList(new ProjectionElem(S2), new ProjectionElem(P2), describeProjectionElem));
 
