@@ -6,7 +6,7 @@
     <parent>
         <groupId>it.unibz.inf.ontop</groupId>
         <artifactId>ontop-test</artifactId>
-        <version>4.2.0</version>
+        <version>4.2.0-RDF4J4-ONTO1</version>
     </parent>
 
     <artifactId>ontop-sparql-compliance</artifactId>
@@ -60,11 +60,6 @@
             <scope>test</scope>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.eclipse.rdf4j</groupId>-->
-<!--            <artifactId>rdf4j-util</artifactId>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-model</artifactId>
