@@ -190,8 +190,8 @@
         <tomcat-embed-core.version>9.0.43</tomcat-embed-core.version>
 
         <!-- Ontotext repos -->
-        <internal.repo>http://maven.ontotext.com/content/repositories/owlim-releases</internal.repo>
-        <snapshots.repo>http://maven.ontotext.com/content/repositories/owlim-snapshots</snapshots.repo>
+        <internal.repo>https://maven.ontotext.com/content/repositories/owlim-releases</internal.repo>
+        <snapshots.repo>https://maven.ontotext.com/content/repositories/owlim-snapshots</snapshots.repo>
     </properties>
 
     <dependencyManagement>
@@ -1436,7 +1436,7 @@
                 <version>${maven-deploy-plugin.version}</version>
                 <executions>
                     <execution>
-                        <id>deploy</id>
+                        <id>default-deploy</id>
                         <phase>deploy</phase>
                         <goals>
                             <goal>deploy</goal>
