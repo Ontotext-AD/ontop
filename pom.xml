@@ -190,7 +190,7 @@
         <semargl.version>0.7</semargl.version>
         <sesame.version>2.7.16</sesame.version>
         <thymeleaf.version>3.0.15.RELEASE</thymeleaf.version>
-        <tomcat-embed-core.version>9.0.43</tomcat-embed-core.version>
+        <tomcat-embed-core.version>10.1.9</tomcat-embed-core.version>
     </properties>
 
     <dependencyManagement>
