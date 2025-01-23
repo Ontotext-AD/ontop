@@ -93,17 +93,18 @@
         </repository>
     </repositories>
 
+    <!-- Ontotext deploy to Nexus -->
     <distributionManagement>
-        <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </snapshotRepository>
         <repository>
-            <id>sonatype-nexus-staging</id>
-            <name>Nexus Release Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <id>internal</id>
+            <name>OWLIM Releases repository</name>
+            <url>${internal.repo}</url>
         </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>OWLIM Snapshots repository</name>
+            <url>${snapshots.repo}</url>
+        </snapshotRepository>
     </distributionManagement>
 
     <properties>
@@ -207,6 +208,10 @@
 
         <!-- JDK version -->
         <jdk.version>11</jdk.version>
+
+        <!-- Ontotext repos -->
+        <internal.repo>http://maven.ontotext.com/content/repositories/owlim-releases</internal.repo>
+        <snapshots.repo>http://maven.ontotext.com/content/repositories/owlim-snapshots</snapshots.repo>
     </properties>
 
     <dependencyManagement>
