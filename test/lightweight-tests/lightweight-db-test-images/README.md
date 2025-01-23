@@ -11,13 +11,13 @@ To start the containers:
   ```
 2. Start the Docker container:
   ```
-  docker-compose -f docker-compose.lightweight.yml up
+  docker compose -f docker-compose.lightweight.yml up
   ```
 The container is run on the foreground and can be stopped by pressing CTRL-C.
 
 3. Stop and remove the containers:
   ```
-  docker-compose -f docker-compose.public.yml down
+  docker compose -f docker-compose.public.yml down
   ```
 
 ### Build images from local Dockerfiles
@@ -27,15 +27,15 @@ The container is run on the foreground and can be stopped by pressing CTRL-C.
   ```
 2. Build the docker images:
   ```
-  docker-compose build 
+  docker compose build 
   ```
 3. Start the Docker container:
   ```
-  docker-compose up
+  docker compose up
   ```
 The container is run on the foreground and can be stopped by pressing CTRL-C.
 
 4. Stop and remove the containers:
   ```
-  docker-compose down
+  docker compose down
   ```

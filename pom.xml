@@ -5,7 +5,7 @@
 
     <groupId>it.unibz.inf.ontop</groupId>
     <artifactId>ontop</artifactId>
-    <version>5.1.2</version>
+    <version>5.1.2-RDF4J-5-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Ontop</name>
@@ -75,7 +75,7 @@
     <scm>
         <connection>scm:git:git@github.com:ontop/ontop.git</connection>
         <developerConnection>scm:git:git@github.com:ontop/ontop.git</developerConnection>
-        <tag>ontop-5.1.2</tag>
+        <tag>ontop-5.1.2-RDF4J-5-SNAPSHOT</tag>
         <url>git@github.com:ontop/ontop.git</url>
     </scm>
 
@@ -93,17 +93,18 @@
         </repository>
     </repositories>
 
+    <!-- Ontotext deploy to Nexus -->
     <distributionManagement>
-        <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </snapshotRepository>
         <repository>
-            <id>sonatype-nexus-staging</id>
-            <name>Nexus Release Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <id>internal</id>
+            <name>OWLIM Releases repository</name>
+            <url>${internal.repo}</url>
         </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>OWLIM Snapshots repository</name>
+            <url>${snapshots.repo}</url>
+        </snapshotRepository>
     </distributionManagement>
 
     <properties>
@@ -180,11 +181,11 @@
         <logback.version>1.2.13</logback.version>
         <nullanno.version>3.0.0</nullanno.version>
         <opencsv.version>5.7.1</opencsv.version>
-        <owlapi.version>5.1.20</owlapi.version>
+        <owlapi.version>5.5.1</owlapi.version>
         <proj4j.version>1.1.1</proj4j.version>
         <protege-xmlcatalog.version>1.0.5</protege-xmlcatalog.version>
         <r2rml-api.version>0.9.0</r2rml-api.version>
-        <rdf4j.version>4.2.4</rdf4j.version>
+        <rdf4j.version>5.1.0</rdf4j.version>
         <servlet2-api.version>2.5</servlet2-api.version>
         <servlet4-api.version>4.0.1</servlet4-api.version>
         <slf4j.version>1.7.36</slf4j.version>
@@ -207,6 +208,10 @@
 
         <!-- JDK version -->
         <jdk.version>11</jdk.version>
+
+        <!-- Ontotext repos -->
+        <internal.repo>https://maven.ontotext.com/content/repositories/owlim-releases</internal.repo>
+        <snapshots.repo>https://maven.ontotext.com/content/repositories/owlim-snapshots</snapshots.repo>
     </properties>
 
     <dependencyManagement>
@@ -1435,7 +1440,7 @@
                                         <exclude>org.apache.logging.log4j:log4j-core:(,2.17.0)</exclude>
                                     </excludes>
                                 </bannedDependencies>
-                                <dependencyConvergence />
+                                <dependencyConvergence/>
                             </rules>
                         </configuration>
                     </execution>
@@ -1476,13 +1481,13 @@
         <profile>
             <id>plugin</id>
             <properties>
-                <plugin.phase-prefix />
+                <plugin.phase-prefix/>
             </properties>
         </profile>
         <profile>
             <id>asset-cli</id>
             <properties>
-                <asset-cli.phase-prefix />
+                <asset-cli.phase-prefix/>
             </properties>
             <build>
                 <defaultGoal>package</defaultGoal>
@@ -1491,8 +1496,8 @@
         <profile>
             <id>asset-plugin</id>
             <properties>
-                <plugin.phase-prefix />
-                <asset-plugin.phase-prefix />
+                <plugin.phase-prefix/>
+                <asset-plugin.phase-prefix/>
             </properties>
             <build>
                 <defaultGoal>package</defaultGoal>
@@ -1501,9 +1506,9 @@
         <profile>
             <id>asset-protege</id>
             <properties>
-                <plugin.phase-prefix />
-                <asset-plugin.phase-prefix />
-                <asset-protege.phase-prefix />
+                <plugin.phase-prefix/>
+                <asset-plugin.phase-prefix/>
+                <asset-protege.phase-prefix/>
             </properties>
             <build>
                 <defaultGoal>package</defaultGoal>
@@ -1512,10 +1517,10 @@
         <profile>
             <id>release</id>
             <properties>
-                <plugin.phase-prefix />
-                <asset-cli.phase-prefix />
-                <asset-plugin.phase-prefix />
-                <asset-protege.phase-prefix />
+                <plugin.phase-prefix/>
+                <asset-cli.phase-prefix/>
+                <asset-plugin.phase-prefix/>
+                <asset-protege.phase-prefix/>
             </properties>
             <build>
                 <defaultGoal>package</defaultGoal>
