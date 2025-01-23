@@ -118,66 +118,66 @@ jobs:
           ATHENA_BUCKET: ${{ secrets.ATHENA_BUCKET }}
         run: cd test/lightweight-tests && ../../mvnw install -Dgroups="athenalighttests" -DskipTests=false -Dathena.user=${ATHENA_USER} -Dathena.password=${ATHENA_PASSWORD} -Dathena.bucket=${ATHENA_BUCKET} --fail-at-end
 
-#  run-bigquery:
-#    # Checks if secrets are available
-#    if: needs.check-secrets.outputs.have_secrets == 'true'
-#    needs: [ build-run-non-docker-tests , run-athena ]
-#    # The type of runner that the job will run on
-#    runs-on: ubuntu-latest
-#    strategy:
-#      # The java versions the job will run on
-#      matrix:
-#        jdk: [ 11 ]
-#
-#    steps:
-#      # Checks-out ontop repository under $GITHUB_WORKSPACE
-#      - uses: actions/checkout@v3
-#      # Set up the java versions
-#      - name: Set up Java
-#        uses: actions/setup-java@v3
-#        with:
-#          distribution: 'corretto'
-#          java-version: ${{ matrix.jdk }}
-#          cache: maven
-#      - name: Set maven opts
-#        run: set MAVEN_OPTS="-Xms6000m -Xmx8000m"
-#      - name: Run CI for BigQuery lightweight tests
-#        env:
-#          BIGQUERY_USER: ${{ secrets.BIGQUERY_USER }}
-#          BIGQUERY_PASSWORD: ${{ secrets.BIGQUERY_PASSWORD }}
-#          BIGQUERY_PROJECT: ${{ secrets.BIGQUERY_PROJECT }}
-#          BIGQUERY_DOMAIN: ${{ secrets.BIGQUERY_DOMAIN }}
-#        run: cd test/lightweight-tests && ../../mvnw install -Dgroups="bigquerylighttests" -DskipTests=false -Dbigquery.user=${BIGQUERY_USER} -Dbigquery.password=${BIGQUERY_PASSWORD} -Dbigquery.project=${BIGQUERY_PROJECT} -Dbigquery.domain=${BIGQUERY_DOMAIN} --fail-at-end
+  #  run-bigquery:
+  #    # Checks if secrets are available
+  #    if: needs.check-secrets.outputs.have_secrets == 'true'
+  #    needs: [ build-run-non-docker-tests , run-athena ]
+  #    # The type of runner that the job will run on
+  #    runs-on: ubuntu-latest
+  #    strategy:
+  #      # The java versions the job will run on
+  #      matrix:
+  #        jdk: [ 11 ]
+  #
+  #    steps:
+  #      # Checks-out ontop repository under $GITHUB_WORKSPACE
+  #      - uses: actions/checkout@v3
+  #      # Set up the java versions
+  #      - name: Set up Java
+  #        uses: actions/setup-java@v3
+  #        with:
+  #          distribution: 'corretto'
+  #          java-version: ${{ matrix.jdk }}
+  #          cache: maven
+  #      - name: Set maven opts
+  #        run: set MAVEN_OPTS="-Xms6000m -Xmx8000m"
+  #      - name: Run CI for BigQuery lightweight tests
+  #        env:
+  #          BIGQUERY_USER: ${{ secrets.BIGQUERY_USER }}
+  #          BIGQUERY_PASSWORD: ${{ secrets.BIGQUERY_PASSWORD }}
+  #          BIGQUERY_PROJECT: ${{ secrets.BIGQUERY_PROJECT }}
+  #          BIGQUERY_DOMAIN: ${{ secrets.BIGQUERY_DOMAIN }}
+  #        run: cd test/lightweight-tests && ../../mvnw install -Dgroups="bigquerylighttests" -DskipTests=false -Dbigquery.user=${BIGQUERY_USER} -Dbigquery.password=${BIGQUERY_PASSWORD} -Dbigquery.project=${BIGQUERY_PROJECT} -Dbigquery.domain=${BIGQUERY_DOMAIN} --fail-at-end
 
-#  run-redshift:
-#    # Checks if secrets are available
-#    if: needs.check-secrets.outputs.have_secrets == 'true'
-#    needs: [ build-run-non-docker-tests , run-athena ]
-#    # The type of runner that the job will run on
-#    runs-on: ubuntu-latest
-#    strategy:
-#      # The java versions the job will run on
-#      matrix:
-#        jdk: [ 11 ]
-#
-#    steps:
-#      # Checks-out ontop repository under $GITHUB_WORKSPACE
-#      - uses: actions/checkout@v3
-#      # Set up the java versions
-#      - name: Set up Java
-#        uses: actions/setup-java@v3
-#        with:
-#          distribution: 'corretto'
-#          java-version: ${{ matrix.jdk }}
-#          cache: maven
-#      - name: Set maven opts
-#        run: set MAVEN_OPTS="-Xms6000m -Xmx8000m"
-#      - name: Run CI for Redshift lightweight tests
-#        env:
-#          REDSHIFT_USER: ${{ secrets.REDSHIFT_USER }}
-#          REDSHIFT_PASSWORD: ${{ secrets.REDSHIFT_PASSWORD }}
-#          REDSHIFT_ACCOUNT: ${{ secrets.REDSHIFT_ACCOUNT }}
-#        run: cd test/lightweight-tests && ../../mvnw install -Dgroups="redshiftlighttests" -DskipTests=false -Dredshift.user=${REDSHIFT_USER} -Dredshift.password=${REDSHIFT_PASSWORD} -Dredshift.account=${REDSHIFT_ACCOUNT} --fail-at-end
+  #  run-redshift:
+  #    # Checks if secrets are available
+  #    if: needs.check-secrets.outputs.have_secrets == 'true'
+  #    needs: [ build-run-non-docker-tests , run-athena ]
+  #    # The type of runner that the job will run on
+  #    runs-on: ubuntu-latest
+  #    strategy:
+  #      # The java versions the job will run on
+  #      matrix:
+  #        jdk: [ 11 ]
+  #
+  #    steps:
+  #      # Checks-out ontop repository under $GITHUB_WORKSPACE
+  #      - uses: actions/checkout@v3
+  #      # Set up the java versions
+  #      - name: Set up Java
+  #        uses: actions/setup-java@v3
+  #        with:
+  #          distribution: 'corretto'
+  #          java-version: ${{ matrix.jdk }}
+  #          cache: maven
+  #      - name: Set maven opts
+  #        run: set MAVEN_OPTS="-Xms6000m -Xmx8000m"
+  #      - name: Run CI for Redshift lightweight tests
+  #        env:
+  #          REDSHIFT_USER: ${{ secrets.REDSHIFT_USER }}
+  #          REDSHIFT_PASSWORD: ${{ secrets.REDSHIFT_PASSWORD }}
+  #          REDSHIFT_ACCOUNT: ${{ secrets.REDSHIFT_ACCOUNT }}
+  #        run: cd test/lightweight-tests && ../../mvnw install -Dgroups="redshiftlighttests" -DskipTests=false -Dredshift.user=${REDSHIFT_USER} -Dredshift.password=${REDSHIFT_PASSWORD} -Dredshift.account=${REDSHIFT_ACCOUNT} --fail-at-end
 
   run-postgresql:
     needs: build-run-non-docker-tests
@@ -202,7 +202,7 @@ jobs:
         run: set MAVEN_OPTS="-Xms6000m -Xmx8000m"
       - name: Set up docker
         run: cd test/lightweight-tests/lightweight-db-test-images &&
-          docker-compose -f "docker-compose.lightweight.yml" up -d pgsql
+          docker compose -f "docker-compose.lightweight.yml" up -d pgsql
       - name: Run CI for PostgreSQL docker tests
         run: cd test/lightweight-tests && ../../mvnw install -Dgroups="pgsqllighttests" -DskipTests=false --fail-at-end
 
@@ -227,7 +227,7 @@ jobs:
         run: set MAVEN_OPTS="-Xms6000m -Xmx8000m"
       - name: Set up docker
         run: cd test/lightweight-tests/lightweight-db-test-images &&
-          docker-compose -f "docker-compose.lightweight.yml" up -d pgsql dremio
+          docker compose -f "docker-compose.lightweight.yml" up -d pgsql dremio
       - name: Sleep for 20 seconds
         run: sleep 20s
         shell: bash
@@ -256,7 +256,7 @@ jobs:
         run: set MAVEN_OPTS="-Xms6000m -Xmx8000m"
       - name: Set up docker
         run: cd test/lightweight-tests/lightweight-db-test-images &&
-          docker-compose -f "docker-compose.lightweight.yml" up -d mssql
+          docker compose -f "docker-compose.lightweight.yml" up -d mssql
       # Runs all tests specific to a db engine
       - name: Run CI for SQLServer docker tests
         run: cd test/lightweight-tests && ../../mvnw install -Dgroups="mssqllighttests" -DskipTests=false --fail-at-end
@@ -282,7 +282,7 @@ jobs:
         run: set MAVEN_OPTS="-Xms6000m -Xmx8000m"
       - name: Set up docker
         run: cd test/lightweight-tests/lightweight-db-test-images &&
-          docker-compose -f "docker-compose.lightweight.yml" up -d mysql-v8
+          docker compose -f "docker-compose.lightweight.yml" up -d mysql-v8
       # Runs all tests specific to a db engine
       - name: Run CI for MySQL docker tests
         run: cd test/lightweight-tests && ../../mvnw install -Dgroups="mysqllighttests" -DskipTests=false --fail-at-end
@@ -308,7 +308,7 @@ jobs:
         run: set MAVEN_OPTS="-Xms6000m -Xmx8000m"
       - name: Set up docker
         run: cd test/lightweight-tests/lightweight-db-test-images &&
-          docker-compose -f "docker-compose.lightweight.yml" up -d mysql-v5
+          docker compose -f "docker-compose.lightweight.yml" up -d mysql-v5
       # Runs all tests specific to a db engine
       - name: Set Environment Variable for MySQL 5 # Needed to skip tests
         run: echo "MYSQL_VERSION=5" >> $GITHUB_ENV
@@ -338,7 +338,7 @@ jobs:
         run: set MAVEN_OPTS="-Xms6000m -Xmx8000m"
       - name: Set up docker
         run: cd test/lightweight-tests/lightweight-db-test-images &&
-          docker-compose -f "docker-compose.lightweight.yml" up -d mariadb
+          docker compose -f "docker-compose.lightweight.yml" up -d mariadb
       # Runs all tests specific to a db engine
       - name: Run CI for MariaDB docker tests
         run: cd test/lightweight-tests && ../../mvnw install -Dgroups="mariadblighttests" -DskipTests=false --fail-at-end
@@ -364,7 +364,7 @@ jobs:
         run: set MAVEN_OPTS="-Xms6000m -Xmx8000m"
       - name: Set up docker
         run: cd test/lightweight-tests/lightweight-db-test-images &&
-          docker-compose -f "docker-compose.lightweight.yml" up -d oracle
+          docker compose -f "docker-compose.lightweight.yml" up -d oracle
       - name: Sleep for 60 seconds
         run: sleep 60s
         shell: bash
@@ -393,7 +393,7 @@ jobs:
         run: set MAVEN_OPTS="-Xms6000m -Xmx8000m"
       - name: Set up docker
         run: cd test/lightweight-tests/lightweight-db-test-images &&
-          docker-compose -f "docker-compose.lightweight.yml" up -d db2
+          docker compose -f "docker-compose.lightweight.yml" up -d db2
       - name: Sleep for 240 seconds
         run: sleep 240s
         shell: bash
@@ -423,7 +423,7 @@ jobs:
         run: set MAVEN_OPTS="-Xms6000m -Xmx8000m"
       - name: Set up docker
         run: cd test/lightweight-tests/lightweight-db-test-images &&
-          docker-compose -f "docker-compose.lightweight.yml" up -d spark
+          docker compose -f "docker-compose.lightweight.yml" up -d spark
       - name: Sleep for 150 seconds
         run: sleep 150s
         shell: bash
@@ -452,7 +452,7 @@ jobs:
         run: set MAVEN_OPTS="-Xms6000m -Xmx8000m"
       - name: Set up docker
         run: cd test/lightweight-tests/lightweight-db-test-images &&
-          docker-compose -f "docker-compose.lightweight.yml" up -d pgsql trino
+          docker compose -f "docker-compose.lightweight.yml" up -d pgsql trino
       - name: Sleep for 20 seconds
         run: sleep 20s
         shell: bash
@@ -481,7 +481,7 @@ jobs:
         run: set MAVEN_OPTS="-Xms6000m -Xmx8000m"
       - name: Set up docker
         run: cd test/lightweight-tests/lightweight-db-test-images &&
-          docker-compose -f "docker-compose.lightweight.yml" up -d pgsql presto
+          docker compose -f "docker-compose.lightweight.yml" up -d pgsql presto
       - name: Sleep for 20 seconds
         run: sleep 20s
         shell: bash
